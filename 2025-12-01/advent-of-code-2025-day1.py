@@ -1,36 +1,38 @@
 def main():
-    """ Main program """
-    # Read input
     file_path = 'day1-input.txt'
-    with open(file_path, 'r') as file:
-    # rstrip() removes trailing whitespace, including '\\n'
-        rotations = [line.rstrip() for line in file]
-    print(rotations)
-
+    rotations = read_input(file_path)
     password = 0
-    currentPosition = 50
-    highNum = 100
+    current_position = 50
+    dial_limit = 100
+
     for rotation in rotations:
         direction = rotation[0]
         move = int(rotation[1::])
-        x = move % highNum
+        relative_rotation = move % dial_limit
         if direction == 'L':
-            if currentPosition - x < 0:
-                currentPosition = highNum - abs(x - currentPosition)
+            if current_position - relative_rotation < 0:
+                current_position = dial_limit - abs(relative_rotation - current_position)
             else:
-                currentPosition = currentPosition - x
-        else: # R
-            if currentPosition + x > highNum - 1:
-                currentPosition = (currentPosition + x - highNum)
+                current_position = current_position - relative_rotation
+        else:
+            if current_position + relative_rotation > dial_limit - 1:
+                current_position = current_position + relative_rotation - dial_limit
             else:
-                currentPosition = currentPosition + x
+                current_position = current_position + relative_rotation
 
-        if currentPosition == 0:
+        if current_position == 0:
             password += 1
             
     print(f"Password: {password}")
 
     return password
+
+def read_input(file_path):
+    with open(file_path, 'r') as file:
+    # rstrip() removes trailing whitespace, including '\\n'
+        return [line.rstrip() for line in file]
+    
+
 
 if __name__ == "__main__":
     main()
