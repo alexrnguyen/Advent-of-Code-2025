@@ -7,3 +7,4 @@ I'm challenging myself to use a different programming language for each problem.
 - Day 1: Python
 - Day 2: C#
 - Day 3: Go
+- Day 4: JavaScript

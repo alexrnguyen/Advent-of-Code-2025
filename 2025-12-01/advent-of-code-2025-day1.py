@@ -9,7 +9,7 @@ def part1(rotations):
         direction = rotation[0]
         move = int(rotation[1::])
 
-        for i in range(0, move):
+        for _ in range(move):
             if current_position == 0 and direction == 'L':
                 current_position = dial_limit -1
             elif current_position == 99 and direction == 'R':
@@ -35,7 +35,7 @@ def part2(rotations):
         direction = rotation[0]
         move = int(rotation[1::])
 
-        for i in range(0, move):
+        for _ in range(move):
             if current_position == 0 and direction == 'L':
                 current_position = dial_limit -1
             elif current_position == 99 and direction == 'R':
